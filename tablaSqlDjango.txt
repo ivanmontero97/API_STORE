@@ -1,0 +1,56 @@
+Taula "client":
+id (clau primària)
+nom
+cognoms
+email
+password
+created_at
+updated_at
+
+Taula "producte":
+id (clau primària)
+nom
+descripció
+preu
+isActive (borrado logico)
+estoc
+created_at
+updated_at
+
+Taula "carretó":
+id (clau primària)
+id_client (clau externa que fa referència a la taula "client")
+id_llista_productes
+created_at
+updated_at
+estat ENUM('obert', 'tancat') DEFAULT 'obert',
+    CONSTRAINT fk_client FOREIGN KEY (id_client) REFERENCES client(id),
+    CONSTRAINT unq_client_open_cart UNIQUE (id_client, estat)
+
+
+
+Taula Llist_productes:
+id
+id_carreto
+producte
+unitats
+
+
+Taula "comanda":
+id (clau primària)
+id_llista_productes
+id_client (clau externa que fa referència a la taula "client")
+estat (per exemple, "pendent", "enviat", "entregat")
+created_at
+updated_at
+
+Taula "pagament":
+id (clau primària)
+id_comanda (clau externa que fa referència a la taula "comanda")
+import_total
+data_pagament
+num_tarj
+data_caducitat_tarj
+cvc_tarj
+created_at
+updated_at
