@@ -1,7 +1,6 @@
 from django.db import models
 from Pedidos.models import *
 # Create your models here.
-from django.db import models
 
 class Pagos(models.Model):
     id = models.AutoField(primary_key=True)
