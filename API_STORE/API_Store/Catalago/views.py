@@ -46,7 +46,39 @@ def add_or_update_prod(request):
         return Response(data_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+@api_view(['PUT'])
+def update_stock(request, pk ):
+        try:
+            new_stock = request.data["new_stock"]
+            product = Producto.objects.get(id=pk)
+            product.stock = new_stock
+            product.save()
+        except Producto.DoesNotExist:
+            return Response({"error": "Producto no encontrado."}, status=status.HTTP_404_NOT_FOUND)
+        
+     
+        return Response(f"Producto actualizado a stock : {product.stock}")
+
 @api_view(['GET'])
-def get_stock(request, pk):
-    return
+def isValid(resquest, pk):
+    try: 
+        product = Producto.objects.get(id=pk)
+        product.isActive = True
+        product.save()
+    except Producto.DoesNotExist:
+            return Response({"error": "Producto no encontrado."}, status=status.HTTP_404_NOT_FOUND)
+        
+     
+    return Response(f"Producto borrado logico : {product.isActive}")
+
+@api_view(['GET'])
+def isnotValid(resquest, pk):
+    try: 
+        product = Producto.objects.get(id=pk)
+        product.isActive = False
+        product.save()
+    except Producto.DoesNotExist:
+            return Response({"error": "Producto no encontrado."}, status=status.HTTP_404_NOT_FOUND)
+     
+    return Response(f"Producto borrado logico : {product.isActive}")
 
