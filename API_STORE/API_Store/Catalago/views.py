@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework import status
 from .serializer import ProductSerializer
 from .models import Producto
 # Create your views here.
@@ -12,10 +13,40 @@ def get_prod(request):
     return Response({'data': data_serializer.data})
 
 @api_view(['GET'])
-def get_prod_By_Id(request):
-    return 
+def get_prod_By_Id(request, pk):
+    product = Producto.objects.get(id=pk)
+    data_serializer = ProductSerializer(product, many= False)
+    return Response ({"data": data_serializer.data})
 
-@api_view(['POST'])
-def add_prod(request):
+
+@api_view(['POST', 'PUT'])
+def add_or_update_prod(request):
+    if request.method == 'POST':
+        data_serializer = ProductSerializer(data=request.data)
+        
+        if data_serializer.is_valid():
+            data_serializer.save()
+            return Response({"data": data_serializer.data}, status=status.HTTP_201_CREATED)
+        
+        return Response(data_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    elif request.method == 'PUT':
+        try:
+            product_id = request.data.get('id')
+            product = Producto.objects.get(id=product_id)
+        except Producto.DoesNotExist:
+            return Response({"error": "Producto no encontrado."}, status=status.HTTP_404_NOT_FOUND)
+
+        data_serializer = ProductSerializer(product, data=request.data)
+        
+        if data_serializer.is_valid():
+            data_serializer.save()
+            return Response({"data": data_serializer.data}, status=status.HTTP_200_OK)
+        
+        return Response(data_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+def get_stock(request, pk):
     return
 
