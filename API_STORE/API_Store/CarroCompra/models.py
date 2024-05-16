@@ -15,7 +15,6 @@ class Carreto(models.Model):
         ('cerrado', 'Cerrado'),
     )
     estat = models.CharField(max_length=7, choices=ESTADO_CHOICES, default='abierto')
-    comprar = models.BooleanField(default=False)
 
     def __str__(self):
         return f"""Datos del carretó: \n
