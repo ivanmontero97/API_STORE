@@ -79,6 +79,6 @@ def isnotValid(resquest, pk):
         product.save()
     except Producto.DoesNotExist:
             return Response({"error": "Producto no encontrado."}, status=status.HTTP_404_NOT_FOUND)
-        
      
     return Response(f"Producto borrado logico : {product.isActive}")
+
