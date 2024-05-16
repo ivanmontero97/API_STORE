@@ -8,7 +8,6 @@ from django.db import models
 class Carreto(models.Model):
     id = models.AutoField(primary_key=True)
     id_client = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    id_lista_productos = models.IntegerField()  
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     ESTADO_CHOICES = (
