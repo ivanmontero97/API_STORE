@@ -8,6 +8,5 @@ urlpatterns = [
     path('stock/<int:pk>', views.update_stock, name = 'updateStock'),
     path('isvalid/<int:pk>', views.isValid, name = 'isValid'),
     path('isnotvalid/<int:pk>', views.isnotValid, name = 'isnotValid'),
-    path('isnotvalid/<int:pk>', views.isnotValid, name = 'isnotValid')
 ]
 
