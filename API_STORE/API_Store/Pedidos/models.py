@@ -16,7 +16,7 @@ class Comanda(models.Model):
                     id: {self.id},\n
                     id_carreto: {self.id_carreto},\n
                     id_client: {self.id_client},\n
-                    estat_finalizado: {self.estat_finalizado},\n
+                    estat_finalizado: {self.estado_finalizado},\n
                     created_at: {self.created_at},\n
                     updated_at: {self.updated_at}
                 """
