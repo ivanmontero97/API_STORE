@@ -20,7 +20,6 @@ class Carreto(models.Model):
         return f"""Datos del carretó: \n
                     id: {self.id},\n
                     id_client: {self.id_client},\n
-                    id_lista_productos: {self.id_lista_productos},\n
                     estat: {self.estat},\n
                 """
     class Meta:
@@ -44,3 +43,4 @@ class ListaProductos(models.Model):
     
     class Meta:
         db_table = 'ListaProductos' 
+
