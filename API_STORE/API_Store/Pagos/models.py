@@ -2,6 +2,8 @@ from django.db import models
 from Pedidos.models import *
 # Create your models here.
 
+
+
 class Pagos(models.Model):
     id = models.AutoField(primary_key=True)
     id_comanda = models.ForeignKey(Comanda, on_delete=models.CASCADE)
@@ -12,6 +14,7 @@ class Pagos(models.Model):
     cvc_tarj = models.CharField(max_length=3)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    
 
     def __str__(self):
         return f"""Datos del pago: \n
