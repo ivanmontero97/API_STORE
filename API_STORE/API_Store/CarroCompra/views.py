@@ -200,8 +200,7 @@ def comprar(request, pk_carreto):
         id_client=carreto.id_client,
         estado_finalizado=True
     )
-    
-    # Serializar los productos del carreto
+    comanda.save()
     # Serializar los productos del carreto
     productos_serializer = ListaProductosSerializer(productos, many=True)
     
