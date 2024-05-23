@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'Catalago',
     'Pagos',
     'Pedidos',
-    'Cliente'
+    'Cliente',
+    'drf_yasg'
 ]
 
 MIDDLEWARE = [

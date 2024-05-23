@@ -6,8 +6,11 @@ from .serializer import CarretoSerializer,ListaProductosSerializer,UpdateUnitats
 from .models import Carreto,ListaProductos
 from Catalago.models import *
 from Pedidos.models import *
-# Create your views here.
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
+# Create your views here.ç
 
+@swagger_auto_schema(method='post', request_body=CarretoSerializer)
 @api_view(['POST'])
 def add_Carreto(request):
     cliente_id = request.data.get('id_client')
@@ -37,6 +40,8 @@ def add_Carreto(request):
     
     return Response(data_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+@swagger_auto_schema(method='post', request_body=ListaProductosSerializer)
 @api_view(['POST'])
 def add_Products(request):
     data_serializer = ListaProductosSerializer(data=request.data)

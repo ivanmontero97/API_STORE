@@ -3,7 +3,9 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializer import ClienteSerializer
 from .models import Cliente
+from drf_yasg.utils import swagger_auto_schema
 
+@swagger_auto_schema(method='post', request_body=ClienteSerializer)
 @api_view(['GET', 'POST'])
 def cliente_list(request):
     if request.method == 'GET':
@@ -17,6 +19,8 @@ def cliente_list(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+@swagger_auto_schema(method='put', request_body=ClienteSerializer)
 @api_view(['GET', 'PUT', 'DELETE'])
 def cliente_detail(request, pk):
     try:

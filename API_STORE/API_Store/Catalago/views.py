@@ -4,6 +4,9 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializer import ProductSerializer
 from .models import Producto
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
+
 # Create your views here.
 
 @api_view(['GET'])
@@ -18,7 +21,8 @@ def get_prod_By_Id(request, pk):
     data_serializer = ProductSerializer(product, many= False)
     return Response ({"data": data_serializer.data})
 
-
+@swagger_auto_schema(method='put', request_body=ProductSerializer)
+@swagger_auto_schema(method='post', request_body=ProductSerializer)
 @api_view(['POST', 'PUT'])
 def add_or_update_prod(request):
     if request.method == 'POST':
@@ -45,7 +49,7 @@ def add_or_update_prod(request):
         
         return Response(data_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
+@swagger_auto_schema(method='put', request_body=ProductSerializer)
 @api_view(['PUT'])
 def update_stock(request, pk ):
         try:

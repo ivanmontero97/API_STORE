@@ -6,9 +6,10 @@ from .serializer import PagosSerializer
 from Pedidos.serializer import PedidosSerializer
 from Pedidos.serializer import Comanda
 from .models import Producto
+from drf_yasg.utils import swagger_auto_schema
 # Create your views here.
 
-
+@swagger_auto_schema(method='post', request_body=PagosSerializer)
 @api_view(['POST'])
 def get_datos_pago(request, pk):
     try:

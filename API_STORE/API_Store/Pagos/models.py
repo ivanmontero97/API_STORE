@@ -21,7 +21,7 @@ class Pagos(models.Model):
                     id: {self.id},\n
                     id_comanda: {self.id_comanda},\n
                     import_total: {self.import_total},\n
-                    data_pagament: {self.data_pagament},\n
+                    data_pagament: {self.fecha_pago},\n
                     num_tarj: {self.num_tarj},\n
                     data_caducitat_tarj: {self.data_caducitat_tarj},\n
                     cvc_tarj: {self.cvc_tarj},\n
