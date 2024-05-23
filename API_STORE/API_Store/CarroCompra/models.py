@@ -15,13 +15,11 @@ class Carreto(models.Model):
         ('cerrado', 'Cerrado'),
     )
     estat = models.CharField(max_length=7, choices=ESTADO_CHOICES, default='abierto')
-    comprar = models.BooleanField(default=False)
 
     def __str__(self):
         return f"""Datos del carretó: \n
                     id: {self.id},\n
                     id_client: {self.id_client},\n
-                    id_lista_productos: {self.id_lista_productos},\n
                     estat: {self.estat},\n
                 """
     class Meta:
@@ -45,3 +43,4 @@ class ListaProductos(models.Model):
     
     class Meta:
         db_table = 'ListaProductos' 
+

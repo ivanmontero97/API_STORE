@@ -1,2 +1,6 @@
 env_apirest/
+<<<<<<< HEAD:.gitignore
 Store-env/
+=======
+env_API_Store/
+>>>>>>> a15ae7ab0577b26c9b81e449e4b689f6dfc98f86:API_STORE/.gitignore
