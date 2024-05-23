@@ -100,7 +100,7 @@ def add_Products(request):
                 return Response({"Error": "No hay suficiente stock del producto","data":salida( data_serializer.validated_data['id_carreto'].id)}, status=status.HTTP_400_BAD_REQUEST)
 
             data_serializer.save()
-            return Response({ "Succes": f'Producto agregado al carreto con id {data_serializer.validated_data['id_carreto']} correctamente',"data":salida( data_serializer.validated_data['id_carreto'])}, status=status.HTTP_201_CREATED)
+            return Response({ "Succes": f"Producto agregado al carreto con id {data_serializer.validated_data['id_carreto']} correctamente","data":salida( data_serializer.validated_data['id_carreto'])}, status=status.HTTP_201_CREATED)
         return Response({"Error":'El estado del carrito seleccionado esta cerrado y no se pueden agregar productos',"data":salida( data_serializer.validated_data['id_carreto'].id)})
     return Response(data_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
